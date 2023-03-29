@@ -2,12 +2,13 @@
 <html>
 
 <head>
-    <title>Formulário de perguntas e respostas</title>
+    <title>Questionário</title>
     <meta charset="UTF-8">
+    <script src="formulario.js"></script>
 </head>
 
 <body>
-    <form id="meuForm" action="resultado.html" method="post">
+    <form id="formulario" action="resultado.html" method="post">
         <fieldset id="pergunta1" data-max-opcoes="5">
             <label for="pergunta1">MARQUE OS 5 (CINCO) SENTIDOS OU SITUAÇÕES QUE FAZEM VOCÊ SE SENTIR MAIS MOTIVADO
                 NO
@@ -414,26 +415,6 @@
 
     </form>
 
-    <script>
-        function verificarRespostas() {
-            var perguntas = document.querySelectorAll('#minhasOpcoes fieldset');
-            perguntas.forEach(function (pergunta) {
-                var opcoes = pergunta.querySelectorAll('input[type="checkbox"]:checked');
-                var maxOpcoes = pergunta.getAttribute('data-max-opcoes');
-                if (opcoes.length > maxOpcoes) {
-                    document.getElementById('mensagemErro').innerHTML = 'Você só pode selecionar até ' + maxOpcoes + ' opções para cada pergunta.';
-                    document.getElementById('meuForm').onsubmit = function () {
-                        return false;
-                    };
-                } else {
-                    document.getElementById('mensagemErro').innerHTML = '';
-                    document.getElementById('meuForm').onsubmit = function () {
-                        return true;
-                    };
-                }
-            });
-        }
-    </script>
 </body>
 
 </html>
