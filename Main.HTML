@@ -4,7 +4,6 @@
 <head>
     <title>Questionário</title>
     <meta charset="UTF-8">
-    <script src="formulario.js"></script>
 </head>
 
 <body>
@@ -411,49 +410,10 @@
         </fieldset>
         <span id="mensagemErro"></span>
 
-        <input type="button" value="Enviar" onclick="calcularPontuacao()">
+        <input type="button" value="Enviar">
 
     </form>
-    <script>
-        function calcularPontuacao() {
-            let se = 0;
-            let sd = 0;
-            let ie = 0;
-            let id = 0;
 
-            // verifica cada checkbox e adiciona pontos na categoria correspondente
-            let perguntas = document.getElementsByClassName("pergunta");
-            for (let i = 0; i < perguntas.length; i++) {
-                let checkboxes = perguntas[i].getElementsByClassName("checkbox-resposta");
-                for (let j = 0; j < checkboxes.length; j++) {
-                    if (checkboxes[j].checked) {
-                        let categoria = checkboxes[j].value;
-                        if (categoria === "SE") {
-                            se++;
-                        } else if (categoria === "SD") {
-                            sd++;
-                        } else if (categoria === "IE") {
-                            ie++;
-                        } else if (categoria === "ID") {
-                            id++;
-                        }
-                    }
-                }
-            }
-
-            // calcula a pontuação total
-            let total = se + sd + ie + id;
-
-            // cria uma nova página com o resultado da pontuação
-            let resultado = window.open("");
-            resultado.document.write("<h1>Pontuação:</h1>");
-            resultado.document.write("<p>SE: " + se + " pontos</p>");
-            resultado.document.write("<p>SD: " + sd + " pontos</p>");
-            resultado.document.write("<p>IE: " + ie + " pontos</p>");
-            resultado.document.write("<p>ID: " + id + " pontos</p>");
-            resultado.document.write("<p>Total: " + total + " pontos</p>");
-        }
-    </script>
 
 </body>
 
