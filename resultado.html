@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8 name=" viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado do Questionário</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+    <h1 class="titulo">Resultado do Questionário</h1>
+    <p>Você obteve um total de <span id="resultado" class="pontuacao"></span> pontos.</p>
+
+    <script>
+        // Obtém o resultado do questionário da query string da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const resultado = urlParams.get('resultado');
+
+        // Mostra o resultado na página
+        const resultadoElemento = document.querySelector('#resultado');
+        resultadoElemento.textContent = resultado;
+    </script>
+</body>
+
+</html>
