@@ -3,31 +3,38 @@ body {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  background-color: white;
+  align-items: center;
+  background-color: black;
 }
 h1 {
   text-align: center;
-  color: black;
+  color: rgb(255, 255, 255);
+  font-family: "Montserrat", sans-serif;
 }
 form {
   margin-top: 20px;
-  color: black;
+  color: rgb(255, 255, 255);
+  font-family: "Roboto", sans-serif;
 }
 label {
   display: block;
   margin-bottom: 10px;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 button[type="submit"] {
-  margin-top: 20px;
-  display: block;
-  padding: 10px 20px;
-  background-color: #4caf50;
-  color: white;
+  display: flex;
+  padding: 3% 6%;
+  background-color: wheat;
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin: 0 auto; /* centraliza o botão horizontalmente */
 }
 button[type="submit"]:hover {
-  background-color: #3e8e41;
+  background-color: #cef50d;
+}
+
+body {
+  background-image: linear-gradient(to bottom, #000000, #333);
 }

@@ -8,8 +8,8 @@
 </head>
 
 <body>
-    <h1>Questionário</h1>
-    <form id="form-questionario" onsubmit="return validarFormulario()" action="resultado.html" method="post">
+    <h1>Escala de Propósito</h1>
+    <form id="form-questionario" onsubmit="return validarFormulario()" action="resultado.html" method="get">
         <p>1. Eu me sinto bem quando penso nas coisas que fiz no passado e nas que espero fazer no futuro.</p>
         <label><input type="radio" name="pergunta1" value="1">Não concordo de jeito nenhum</label><br>
         <label><input type="radio" name="pergunta1" value="2">Concordo pouco</label><br>
@@ -22,7 +22,7 @@
         <label><input type="radio" name="pergunta2" value="-2">Concordo pouco</label><br>
         <label><input type="radio" name="pergunta2" value="-3">Concorância moderada</label><br>
         <label><input type="radio" name="pergunta2" value="-4">Concordo muito</label><br>
-        <label><input type="radio" name="pergunta1" value="-5">Concordo muitíssimo</label><br>
+        <label><input type="radio" name="pergunta2" value="-5">Concordo muitíssimo</label><br>
 
         <p>3. Eu prefiro focar no presente, porque o futuro quase sempre me traz problemas.</p>
         <label><input type="radio" name="pergunta3" value="1">Não concordo de jeito nenhum</label><br>
@@ -82,6 +82,7 @@
 
         <button type="submit" id="botao-enviar" disabled onclick="calcularResultado()">Ver Resultado</button>
     </form>
+
     <script>
         // Seleciona o formulário e o botão de envio
         const form = document.querySelector('#form-questionario');
@@ -103,12 +104,15 @@
             // Soma os valores das respostas
             let somaRespostas = 0;
             respostas.forEach((resposta) => {
-                somaRespostas += parseInt(resposta.value);
+                somaRespostas += Math.abs(parseInt(resposta.value));
             });
+
+            // Calcula a porcentagem das respostas
+            const porcentagem = (somaRespostas * 100) / 20;
 
             // Envia os dados do formulário para a página resultado
             const formData = new FormData(form);
-            formData.append('resultado', somaRespostas);
+            formData.append('resultado', porcentagem.toFixed(2));
             const encodedFormData = new URLSearchParams(formData).toString();
 
             window.location.href = `resultado.html?${encodedFormData}`;
@@ -129,6 +133,8 @@
         // Desativa o botão de envio no início
         desativarBotaoEnvio();
     </script>
+
+
 
 
 
