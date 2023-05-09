@@ -1,6 +1,11 @@
 body {
-  background-color: #f5f5f5;
   font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  align-items: center;
+  background-color: black;
+  color: white;
   text-align: center;
 }
 
@@ -37,4 +42,33 @@ body {
   font-size: 48px;
   margin-bottom: 20px;
   text-align: center;
+}
+
+.titulo {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.barra {
+  width: 50%;
+  height: 30px;
+  background-color: #ddd;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+.barra-preenchida {
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 10px;
+  transition: width 1s ease-in-out;
+}
+
+.pontuacao {
+  font-weight: bold;
+}
+
+p {
+  font-size: 20px;
+  margin-top: 20px;
 }
