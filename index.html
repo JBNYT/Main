@@ -25,11 +25,11 @@
         <label><input type="radio" name="pergunta2" value="-5">Concordo muitíssimo</label><br>
 
         <p>3. Eu prefiro focar no presente, porque o futuro quase sempre me traz problemas.</p>
-        <label><input type="radio" name="pergunta3" value="1">Não concordo de jeito nenhum</label><br>
-        <label><input type="radio" name="pergunta3" value="2">Concordo pouco</label><br>
-        <label><input type="radio" name="pergunta3" value="3">Concorância moderada</label><br>
-        <label><input type="radio" name="pergunta3" value="4">Concordo muito</label><br>
-        <label><input type="radio" name="pergunta3" value="5">Concordo muitíssimo</label><br>
+        <label><input type="radio" name="pergunta3" value="-1">Não concordo de jeito nenhum</label><br>
+        <label><input type="radio" name="pergunta3" value="-2">Concordo pouco</label><br>
+        <label><input type="radio" name="pergunta3" value="-3">Concorância moderada</label><br>
+        <label><input type="radio" name="pergunta3" value="-4">Concordo muito</label><br>
+        <label><input type="radio" name="pergunta3" value="-5">Concordo muitíssimo</label><br>
 
         <p>4. Eu tenho um senso de direção e propósito de vida.</p>
         <label><input type="radio" name="pergunta4" value="1">Não concordo de jeito nenhum</label><br>
@@ -104,15 +104,15 @@
             // Soma os valores das respostas
             let somaRespostas = 0;
             respostas.forEach((resposta) => {
-                somaRespostas += Math.abs(parseInt(resposta.value));
+                somaRespostas += parseInt(resposta.value);
             });
 
-            // Calcula a porcentagem das respostas
-            const porcentagem = (somaRespostas * 100) / 20;
+            // Calcula a porcentagem do resultado
+            const porcentagem = (somaRespostas + 20) / 40 * 100; // considerando que o valor mais alto possível é 20 e o mais baixo é -20
 
             // Envia os dados do formulário para a página resultado
             const formData = new FormData(form);
-            formData.append('resultado', porcentagem.toFixed(2));
+            formData.append('resultado', porcentagem);
             const encodedFormData = new URLSearchParams(formData).toString();
 
             window.location.href = `resultado.html?${encodedFormData}`;
@@ -132,6 +132,7 @@
 
         // Desativa o botão de envio no início
         desativarBotaoEnvio();
+
     </script>
 
 
