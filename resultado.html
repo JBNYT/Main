@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado do Questionário</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+    <h1 class="titulo">Resultado da Escala de Propósito</h1>
+    <p>Você obteve um total de <span id="resultado" class="pontuacao"></span>%.</p>
+
+    <div class="progresso">
+        <div class="progresso-barra"></div>
+    </div>
+
+    <script>
+        // Obtém o resultado do questionário da query string da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const resultado = urlParams.get('resultado');
+
+        // Mostra o resultado na página
+        const resultadoElemento = document.querySelector('#resultado');
+        resultadoElemento.textContent = resultado;
+
+        // Define cores para diferentes faixas de pontuação
+        const faixasDePontuacao = [
+            { min: 0, max: 30, classe: 'progresso-barra-vermelho' },
+            { min: 30, max: 70, classe: 'progresso-barra-amarelo' },
+            { min: 70, max: 100, classe: 'progresso-barra-verde' }
+        ];
+
+        // Obtém a barra de progresso
+        const barraDeProgresso = document.querySelector('.progresso-barra');
+
+        // Define a largura da barra de progresso com base na pontuação
+        const larguraDaBarra = resultado + '%';
+        barraDeProgresso.style.width = larguraDaBarra;
+
+        // Define a classe da barra de progresso com base na pontuação
+        for (const faixa of faixasDePontuacao) {
+            if (resultado >= faixa.min && resultado <= faixa.max) {
+                barraDeProgresso.classList.add(faixa.classe);
+            }
+        }
+    </script>
+</body>
+
+</html>
